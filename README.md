@@ -1,6 +1,9 @@
 # Inttrvu Project 1 - ECommerce Behavior Clustering
 
-<p align="center"> <img src="https://github.com/shrinsharma/ecommerce-behavior-clustering/main/banner.png" width="100%" alt="Inttrvu Project 1 ECommerce Behavior Clustering Banner"> </p>
+<p align="center">
+  <img src="banner.jpg" width="100%" alt="Inttrvu Project 1 ECommerce Behavior Clustering Banner">
+</p>
+
 
 > KMeans K=4 | Flask HTML + API | 182k Sessions | 15 Features | Silhouette Optimized
 
