@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ECommerce Clustering - k=4</title>
+<style>
+body{font-family:Arial;max-width:800px;margin:20px auto;padding:20px;background:#f5f5f5}
+.container{background:white;padding:20px;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,0.1)}
+input{width:100%;padding:8px;margin:5px 0 15px 0;border:1px solid #ddd;border-radius:4px}
+button{background:#007bff;color:white;padding:12px 30px;border:none;border-radius:5px;cursor:pointer;font-size:16px}
+button:hover{background:#0056b3}
+.result{margin-top:20px;padding:15px;background:#d4edda;border-radius:5px}
+h2{color:#333}
+label{font-weight:bold}
+</style>
+</head>
+<body>
+<div class="container">
+<h2>ECommerce Behavior Clustering - Predict k=4</h2>
+<p>Enter 15 features (182k sessions model)</p>
+<form action="/predict_form" method="post">
+<label>event_count</label><input type="number" step="any" name="event_count" value="5" required>
+<label>unique_products</label><input type="number" step="any" name="unique_products" value="3" required>
+<label>avg_price</label><input type="number" step="any" name="avg_price" value="1100" required>
+<label>max_price</label><input type="number" step="any" name="max_price" value="1200" required>
+<label>min_price</label><input type="number" step="any" name="min_price" value="800" required>
+<label>total_views</label><input type="number" step="any" name="total_views" value="3" required>
+<label>total_carts</label><input type="number" step="any" name="total_carts" value="1" required>
+<label>total_purchases</label><input type="number" step="any" name="total_purchases" value="1" required>
+<label>duration_seconds</label><input type="number" step="any" name="duration_seconds" value="300" required>
+<label>has_purchase (0 or 1)</label><input type="number" step="any" name="has_purchase" value="1" required>
+<label>view_to_purchase_rate</label><input type="number" step="any" name="view_to_purchase_rate" value="0.33" required>
+<label>cart_to_purchase_rate</label><input type="number" step="any" name="cart_to_purchase_rate" value="1.0" required>
+<label>hour_first (0-23)</label><input type="number" step="any" name="hour_first" value="10" required>
+<label>top_category_encoded</label><input type="number" step="any" name="top_category_encoded" value="50" required>
+<label>top_brand_encoded</label><input type="number" step="any" name="top_brand_encoded" value="1000" required>
+<button type="submit">Predict Cluster</button>
+</form>
+{% if result %}
+<div class="result">
+<h3>Result: Cluster {{ result.cluster }} - {{ result.meaning }}</h3>
+<p>Personalization: {{ result.action }}</p>
+</div>
+{% endif %}
+<p style="margin-top:20px"><small>API: POST /predict with JSON | Model: kmeans_k4_full_182k.pkl 182k sessions</small></p>
+</div>
+</body>
+</html>
